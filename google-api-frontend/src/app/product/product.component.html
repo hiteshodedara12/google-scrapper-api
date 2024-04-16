@@ -1,0 +1,46 @@
+<div class="d-flex p-3">
+  <input
+    required
+    type="text"
+    [(ngModel)]="inputValue"
+    placeholder="Search Product"
+    class="me-3 w-100"
+  />
+  <button (click)="onSearch()" class="btn btn-primary">Search</button>
+</div>
+
+<div *ngIf="data" class="mt-4">
+  <div class="row m-0">
+    <div class="col-md-4 " *ngFor="let item of data">
+      <div class="card mb-4">
+        <img
+          src="{{ item.thumbnail }}"
+          class="card-img-top"
+          alt="..."
+          height="250px"
+          style="object-fit: contain"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Product Name : {{ item?.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Price : {{ item?.price }}
+          </h6>
+          <p>
+            <span class="fw-bold"> Provider : </span>
+            <span class="fst-normal">{{ item.source }}</span>
+          </p>
+          <p>
+            <span class="fw-bold"> Rating : </span>
+            <span class="fst-normal">{{ item.rating }}</span>
+          </p>
+          <p>
+            <span class="fw-bold"> Reviews : </span>
+            <span class="fst-normal">{{ item.reviews }}</span>
+          </p>
+          Product Link :
+          <a href="#" class="card-link"> {{ item.product_link }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
